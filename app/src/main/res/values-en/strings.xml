@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My Pantry</string>
+    <string name="ingredients_title">Items in your pantry</string>
+    <string name="view_recipes">See recipes</string>
+    <string name="add_ingredient_title">Add ingredient</string>
+    <string name="new_ingredient_hint">Ex: milk, eggs…</string>
+    <string name="ingredient_added">Ingredient saved</string>
+    <string name="ingredient_error">Ingredient could not be saved</string>
+    <string name="ingredient_deleted">Ingredient removed</string>
+    <string name="delete_ingredient">Delete ingredient</string>
+    <string name="recipes_title">Available recipes</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="ingredients_required">Required ingredients: %1$s</string>
+    <string name="view_missing">See missing items</string>
+    <string name="missing_title">Missing for %1$s</string>
+    <string name="save_shopping_list">Save shopping list</string>
+    <string name="no_missing_ingredients">You already have everything for this recipe</string>
+    <string name="shopping_list_saved">Shopping list saved</string>
+    <string name="shopping_list_error">Could not save the list</string>
+    <string name="channel_name">Shopping reminder</string>
+    <string name="channel_description">Notifications about pending ingredients</string>
+    <string name="notification_title">Pending ingredients</string>
+    <string name="notification_body">You are missing %1$d ingredients for %2$s</string>
+</resources>
