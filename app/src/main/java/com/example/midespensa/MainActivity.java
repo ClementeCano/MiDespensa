@@ -2,16 +2,17 @@ package com.example.midespensa;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
 
     private IngredientAdapter adapter;
     private DatabaseHelper databaseHelper;
-    private final List<String> ingredientes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,30 +29,40 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
 
         databaseHelper = new DatabaseHelper(this);
 
+        MaterialToolbar toolbar = findViewById(R.id.topBar);
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.menu_recipes) {
+                startActivity(new Intent(MainActivity.this, RecetasActivity.class));
+                return true;
+            }
+            return false;
+        });
+
         RecyclerView recyclerView = findViewById(R.id.ingredientsRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ingredientes.addAll(databaseHelper.getIngredients());
-        adapter = new IngredientAdapter(ingredientes, this);
+        adapter = new IngredientAdapter(databaseHelper.getIngredients(), this);
         recyclerView.setAdapter(adapter);
 
         FloatingActionButton addIngredient = findViewById(R.id.addIngredientFab);
         addIngredient.setOnClickListener(v -> showAddDialog());
-
-        MaterialButton recipesButton = findViewById(R.id.openRecipesButton);
-        recipesButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RecetasActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void showAddDialog() {
-        EditText input = new EditText(this);
-        input.setHint(R.string.new_ingredient_hint);
-        new AlertDialog.Builder(this)
+        TextInputLayout inputLayout = new TextInputLayout(this, null, com.google.android.material.R.attr.textInputOutlinedStyle);
+        inputLayout.setHint(getString(R.string.new_ingredient_hint));
+        inputLayout.setPadding(getResources().getDimensionPixelSize(R.dimen.dialog_padding),
+                getResources().getDimensionPixelSize(R.dimen.dialog_padding_small),
+                getResources().getDimensionPixelSize(R.dimen.dialog_padding),
+                getResources().getDimensionPixelSize(R.dimen.dialog_padding_small));
+
+        TextInputEditText input = new TextInputEditText(inputLayout.getContext());
+        inputLayout.addView(input);
+
+        new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.add_ingredient_title)
-                .setView(input)
+                .setView(inputLayout)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    String nombre = input.getText().toString();
+                    String nombre = input.getText() != null ? input.getText().toString().trim() : "";
                     boolean inserted = databaseHelper.addIngredient(nombre);
                     if (inserted) {
                         refreshIngredientes();
@@ -61,14 +71,13 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
                         Toast.makeText(this, R.string.ingredient_error, Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNegativeButton(android.R.string.cancel, null)
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.dismiss())
                 .show();
     }
 
     private void refreshIngredientes() {
-        ingredientes.clear();
-        ingredientes.addAll(databaseHelper.getIngredients());
-        adapter.updateData(ingredientes);
+        List<String> nuevosIngredientes = new ArrayList<>(databaseHelper.getIngredients());
+        adapter.updateData(nuevosIngredientes);
     }
 
     @Override
