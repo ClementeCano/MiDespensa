@@ -18,6 +18,7 @@
         android:subtitleTextColor="@color/white"
         android:titleTextColor="@color/white"
         android:background="@android:color/transparent"
+        app:menu="@menu/menu_ingredients"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

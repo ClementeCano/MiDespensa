@@ -14,13 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiDespensa">
         <activity
-            android:name=".FaltantesActivity"
+            android:name=".ShoppingListActivity"
             android:exported="false" />
         <activity
-            android:name=".RecetasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FaltantesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecetasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

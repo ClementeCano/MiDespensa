@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,6 +29,15 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
 
         databaseHelper = new DatabaseHelper(this);
 
+        MaterialToolbar toolbar = findViewById(R.id.topBar);
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.menu_recipes) {
+                startActivity(new Intent(MainActivity.this, RecetasActivity.class));
+                return true;
+            }
+            return false;
+        });
+
         RecyclerView recyclerView = findViewById(R.id.ingredientsRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new IngredientAdapter(databaseHelper.getIngredients(), this);
@@ -36,12 +45,6 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
 
         FloatingActionButton addIngredient = findViewById(R.id.addIngredientFab);
         addIngredient.setOnClickListener(v -> showAddDialog());
-
-        MaterialButton recipesButton = findViewById(R.id.openRecipesButton);
-        recipesButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RecetasActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void showAddDialog() {

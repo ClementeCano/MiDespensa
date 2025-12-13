@@ -2,6 +2,8 @@
     <string name="app_name">Mi Despensa</string>
     <string name="ingredients_title">Ingredientes en tu despensa</string>
     <string name="view_recipes">Ver recetas</string>
+    <string name="open_pantry">Ver mis ingredientes</string>
+    <string name="open_shopping">Lista de la compra</string>
     <string name="add_ingredient_title">Añadir ingrediente</string>
     <string name="new_ingredient_hint">Ej: leche, huevos…</string>
     <string name="ingredient_added">Ingrediente guardado</string>
@@ -13,10 +15,16 @@
     <string name="ingredients_required">Ingredientes necesarios: %1$s</string>
     <string name="view_missing">Ver faltantes</string>
     <string name="missing_title">Faltantes para %1$s</string>
-    <string name="save_shopping_list">Guardar lista de compra</string>
+    <string name="save_shopping_list">Añadir a lista de compra</string>
     <string name="no_missing_ingredients">Ya tienes todo para esta receta</string>
     <string name="shopping_list_saved">Lista de compra guardada</string>
     <string name="shopping_list_error">No se pudo guardar la lista</string>
+    <string name="shopping_list_title">Lista de la compra</string>
+    <string name="shopping_list_empty">Aún no tienes ingredientes por comprar</string>
+    <string name="clear_shopping">Vaciar lista de la compra</string>
+    <string name="shopping_list_cleared">Lista de compra vaciada</string>
+    <string name="home_subtitle">Organiza tu despensa o revisa lo que falta</string>
+    <string name="shopping_list_synced">Ingredientes añadidos a la lista de compra</string>
     <string name="channel_name">Recordatorio de compra</string>
     <string name="channel_description">Notificaciones sobre ingredientes pendientes</string>
     <string name="notification_title">Ingredientes pendientes</string>
