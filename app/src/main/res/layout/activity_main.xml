@@ -4,38 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/headerTitle"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/heroCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/ingredients_title"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/card_surface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ingredientsRecycler"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/headerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredients_title"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:id="@+id/headerSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/app_subtitle"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@color/primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/ingredients_hint"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/listCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/headerTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/heroCard"
         app:layout_constraintBottom_toTopOf="@id/openRecipesButton"
-        tools:listitem="@layout/item_ingredient" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ingredientsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            tools:listitem="@layout/item_ingredient" />
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/openRecipesButton"
         style="@style/Widget.Material3.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="20dp"
         android:text="@string/view_recipes"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_recipe_placeholder"
+        app:iconPadding="12dp"
+        app:iconGravity="textStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -46,10 +95,9 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/add_ingredient_title"
         android:src="@drawable/ic_add"
+        app:backgroundTint="@color/accent"
         app:layout_constraintBottom_toTopOf="@id/openRecipesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

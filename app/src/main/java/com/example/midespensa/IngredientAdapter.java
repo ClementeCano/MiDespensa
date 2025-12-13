@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
@@ -48,8 +49,9 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     }
 
     public void updateData(List<String> nuevosIngredientes) {
+        List<String> snapshot = new ArrayList<>(nuevosIngredientes);
         ingredientes.clear();
-        ingredientes.addAll(nuevosIngredientes);
+        ingredientes.addAll(snapshot);
         notifyDataSetChanged();
     }
 

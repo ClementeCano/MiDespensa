@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/card_surface"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
     app:cardUseCompatPadding="true">
 
     <TextView
@@ -12,5 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/primary_dark" />
 </androidx.cardview.widget.CardView>

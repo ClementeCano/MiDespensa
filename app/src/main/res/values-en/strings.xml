@@ -22,4 +22,9 @@
     <string name="notification_title">Pending ingredients</string>
     <string name="notification_body">You are missing %1$d ingredients for %2$s</string>
     <string name="notification_permission_required">Enable notifications to receive reminders</string>
+    <string name="app_tagline">Organize your pantry with flair</string>
+    <string name="app_subtitle">Add what you have, browse recipes, and build your shopping list in seconds.</string>
+    <string name="ingredients_hint">Keep your list fresh to get better suggestions.</string>
+    <string name="missing_subtitle">These are the ingredients you need to finish your recipe.</string>
+    <string name="recipes_subtitle">Pick a recipe and instantly see what you are missing.</string>
 </resources>

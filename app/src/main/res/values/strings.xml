@@ -22,4 +22,9 @@
     <string name="notification_title">Ingredientes pendientes</string>
     <string name="notification_body">Te faltan %1$d ingredientes para %2$s</string>
     <string name="notification_permission_required">Activa las notificaciones para recibir recordatorios</string>
+    <string name="app_tagline">Organiza tu despensa con estilo</string>
+    <string name="app_subtitle">Añade lo que tienes, explora recetas y crea tu lista de compra en segundos.</string>
+    <string name="ingredients_hint">Mantén tu lista al día para recibir mejores sugerencias.</string>
+    <string name="missing_subtitle">Estos son los ingredientes que necesitas para completar tu receta.</string>
+    <string name="recipes_subtitle">Elige una receta y revisa al instante lo que te falta.</string>
 </resources>
