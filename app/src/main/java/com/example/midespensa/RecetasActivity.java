@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,9 @@ public class RecetasActivity extends AppCompatActivity implements RecipeAdapter.
         databaseHelper = new DatabaseHelper(this);
         databaseHelper.seedDefaultRecipes();
         recipes = databaseHelper.getRecipes();
+
+        MaterialToolbar toolbar = findViewById(R.id.recipesToolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
 
         RecyclerView recyclerView = findViewById(R.id.recipesRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

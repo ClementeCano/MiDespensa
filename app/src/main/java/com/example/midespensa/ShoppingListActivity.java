@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,6 +27,9 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
         emptyMessage = findViewById(R.id.emptyShoppingMessage);
+
+        MaterialToolbar toolbar = findViewById(R.id.shoppingToolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
 
         RecyclerView recyclerView = findViewById(R.id.shoppingRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

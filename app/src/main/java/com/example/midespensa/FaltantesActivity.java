@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -44,6 +45,9 @@ public class FaltantesActivity extends AppCompatActivity {
         if (recipeIngredients == null) {
             recipeIngredients = new ArrayList<>();
         }
+
+        MaterialToolbar toolbar = findViewById(R.id.missingToolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
 
         TextView title = findViewById(R.id.recipeTitle);
         title.setText(getString(R.string.missing_title, recipeName));

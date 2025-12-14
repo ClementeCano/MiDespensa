@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
     android:padding="16dp"
     tools:context=".RecetasActivity">
 
-    <TextView
-        android:id="@+id/recipesTitle"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/recipesToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/recipes_title"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:background="@android:color/transparent"
+        android:title="@string/recipes_title"
+        android:titleTextColor="@color/white"
+        app:titleCentered="true"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -23,7 +28,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
         tools:listitem="@layout/item_receta"
-        app:layout_constraintTop_toBottomOf="@id/recipesTitle"
+        app:layout_constraintTop_toBottomOf="@id/recipesToolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

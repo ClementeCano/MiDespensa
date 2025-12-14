@@ -16,8 +16,10 @@ public class HomeActivity extends AppCompatActivity {
 
         MaterialButton openPantry = findViewById(R.id.openPantryButton);
         MaterialButton openShopping = findViewById(R.id.openShoppingButton);
+        MaterialButton openRecipes = findViewById(R.id.openRecipesButton);
 
         openPantry.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
         openShopping.setOnClickListener(v -> startActivity(new Intent(this, ShoppingListActivity.class)));
+        openRecipes.setOnClickListener(v -> startActivity(new Intent(this, RecetasActivity.class)));
     }
 }
