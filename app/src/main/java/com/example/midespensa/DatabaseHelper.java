@@ -141,4 +141,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_LISTA_COMPRA, null, values);
         return result != -1;
     }
+
+    public boolean addIngredientsToShoppingList(String receta, List<String> faltantes) {
+        if (faltantes == null || faltantes.isEmpty()) {
+            return false;
+        }
+        return saveShoppingList(receta == null ? "" : receta, faltantes);
+    }
+
+    public List<String> getShoppingListItems() {
+        Set<String> uniqueItems = new HashSet<>();
+        SQLiteDatabase db = getReadableDatabase();
+        try (Cursor cursor = db.rawQuery("SELECT faltantes FROM " + TABLE_LISTA_COMPRA + " ORDER BY creado_en DESC", null)) {
+            while (cursor.moveToNext()) {
+                String faltantesTxt = cursor.getString(0);
+                if (faltantesTxt != null && !faltantesTxt.isEmpty()) {
+                    for (String item : faltantesTxt.split(",")) {
+                        if (!item.trim().isEmpty()) {
+                            uniqueItems.add(item.trim());
+                        }
+                    }
+                }
+            }
+        }
+        List<String> result = new ArrayList<>(uniqueItems);
+        result.sort(String::compareToIgnoreCase);
+        return result;
+    }
+
+    public void clearShoppingList() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_LISTA_COMPRA, null, null);
+    }
 }

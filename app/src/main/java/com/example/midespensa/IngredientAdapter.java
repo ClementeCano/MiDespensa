@@ -3,12 +3,13 @@ package com.example.midespensa;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import com.google.android.material.button.MaterialButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
@@ -20,7 +21,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
     private final IngredientListener listener;
 
     public IngredientAdapter(List<String> ingredientes, IngredientListener listener) {
-        this.ingredientes = ingredientes;
+        this.ingredientes = new ArrayList<>(ingredientes);
         this.listener = listener;
     }
 
@@ -55,7 +56,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView nombre;
-        final ImageButton deleteButton;
+        final MaterialButton deleteButton;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

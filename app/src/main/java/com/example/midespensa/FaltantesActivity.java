@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -45,6 +46,9 @@ public class FaltantesActivity extends AppCompatActivity {
             recipeIngredients = new ArrayList<>();
         }
 
+        MaterialToolbar toolbar = findViewById(R.id.missingToolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
+
         TextView title = findViewById(R.id.recipeTitle);
         title.setText(getString(R.string.missing_title, recipeName));
 
@@ -55,13 +59,20 @@ public class FaltantesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MissingAdapter(faltantes));
 
+        if (!faltantes.isEmpty()) {
+            boolean added = databaseHelper.addIngredientsToShoppingList(recipeName, faltantes);
+            if (added) {
+                Snackbar.make(recyclerView, R.string.shopping_list_synced, Snackbar.LENGTH_SHORT).show();
+            }
+        }
+
         MaterialButton saveButton = findViewById(R.id.saveListButton);
         saveButton.setOnClickListener(v -> {
             if (faltantes.isEmpty()) {
                 Snackbar.make(v, R.string.no_missing_ingredients, Snackbar.LENGTH_SHORT).show();
                 return;
             }
-            boolean saved = databaseHelper.saveShoppingList(recipeName, faltantes);
+            boolean saved = databaseHelper.addIngredientsToShoppingList(recipeName, faltantes);
             if (saved) {
                 Snackbar.make(v, R.string.shopping_list_saved, Snackbar.LENGTH_LONG).show();
                 showNotification(recipeName, faltantes.size());
