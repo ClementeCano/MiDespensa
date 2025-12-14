@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements IngredientAdapter
         databaseHelper = new DatabaseHelper(this);
 
         MaterialToolbar toolbar = findViewById(R.id.topBar);
-        toolbar.setNavigationOnClickListener(v -> finish());
         toolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_recipes) {
                 startActivity(new Intent(MainActivity.this, RecetasActivity.class));
