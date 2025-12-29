@@ -27,13 +27,13 @@
         </activity>
         <activity
             android:name=".FaltantesActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".RecetasActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>

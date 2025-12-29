@@ -29,4 +29,5 @@
     <string name="channel_description">Notificaciones sobre ingredientes pendientes</string>
     <string name="notification_title">Ingredientes pendientes</string>
     <string name="notification_body">Te faltan %1$d ingredientes para %2$s</string>
+    <string name="clear_shopping_list">Limpiar Lista de la Compra</string>
 </resources>
